@@ -12,7 +12,7 @@ sub config_options {
     return qw(
         print|p
         dump|d:s
-        load|l=s
+        load|l:s
         clear|c
         show
     );
@@ -41,7 +41,7 @@ sub process {
         return 1;
     }
     if ( defined $self->option('load') ) {
-        if ( $self->option('load') && $self->option('load') ne q{-} ) {
+        if ( defined($self->option('load')) && $self->option('load') ne q{-} ) {
             $db->clear;
             $db->load( $self->option('load') );
             return 1;

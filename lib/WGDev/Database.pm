@@ -104,7 +104,7 @@ sub clear {
 
 sub load {
     my $self     = shift;
-    my $dumpfile = shift;
+    my $dumpfile = shift || $self->database . '.sql';
     system 'mysql', $self->command_line( '-e' . 'source ' . $dumpfile )
         and WGDev::X::System->throw('Error running mysql');
     return 1;
